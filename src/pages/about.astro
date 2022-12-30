@@ -1,4 +1,19 @@
 ---
+const pageTitle = "loudbytes - About";
+const bodyTitle = "About";
+
+const identity = {
+	firstName: "Mateo",
+	country: "Croatia",
+	occupation: "Software Engineer",
+	hobbies: ["Martial Arts", "Podcasts", "Calisthenics", "Music"]
+}; 
+
+const skills = ["HTML", "CSS", "JavaScript", "React", "Astro", "Node.js", "TypeScript", "MySQL", "Writing", "...and many more"];
+
+const happy = true;
+const finished = false;
+const goal = 3;  
 ---
 
 <html lang="en">
@@ -7,16 +22,38 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>loudbytes</title>
+		<title>{pageTitle}</title>
 	</head>
 	<body>
         <a href="/">Home</a>
         <a href="/about">About</a>
         <a href="/blog">Blog</a>
-		<h1>About Me</h1>
-        <h2>...and the loudbytes blog!</h2>
+		<h1>{bodyTitle}</h1>
+        <h2>...loudbytes!</h2>
 
         <p>This is an introductory Astro tutorial where I am learning how Astro works!</p>
         <p>So far, I like it!</p>
+
+		<p>Here are a few facts about me:</p>
+		<ul>
+			<li>My name is {identity.firstName}</li>
+			<li>I am from {identity.country}</li>
+			<li>I am a {identity.occupation}</li>
+			<li>I enjoy {identity.hobbies.join(", ")}</li>
+		</ul>
+		<p>My skills are:</p>
+		<ul>
+			{skills.map((skill) => (
+				<li>{skill}</li>
+			))}
+		</ul>
+		<!-- Conditional rendering -->
+		{happy && <p>I am happy that I am learning Astro!</p>}
+		{finished && <p>I am finished with this tutorial!</p>}
+		{goal === 3 ? (
+			<p>My goal is to learn Astro in 3 days!</p>
+		) : (
+			<p>My goal is to not learn Astro in 3 days!</p>
+		)}
 	</body>
 </html>
