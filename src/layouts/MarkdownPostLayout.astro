@@ -1,0 +1,20 @@
+---
+import BaseLayout from "./BaseLayout.astro";
+const {frontmatter} = Astro.props;
+---
+<style>
+    span {
+        width: 200px;
+        margin: 0.5rem;
+        border: 1px solid purple;
+        padding: 0.5rem;
+    }
+</style>
+<BaseLayout pageTitle={frontmatter.title} blogAuthor={frontmatter.author}>
+<img src={frontmatter.image.url} width="500" alt={frontmatter.image.alt}>
+<slot />
+<p>Tags: {frontmatter.tags.map((tag)=>{
+    //map through the tags array and return a text for each tag
+    return <span>{tag}</span>
+})}</p>
+</BaseLayout>
